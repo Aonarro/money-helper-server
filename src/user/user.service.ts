@@ -31,7 +31,9 @@ export class UserService {
       email: createUserDto.email,
     });
 
-    return { newUser, token };
+    const { password, ...restFields } = newUser;
+
+    return { restFields, token };
   }
 
   async findOne(email: string) {
